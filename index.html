@@ -247,37 +247,42 @@
             width: 100%;
         }
 
-        /* TryHackMe Badge at Top */
-        .tryhackme-top-badge {
-            position: fixed;
-            top: 2rem;
-            left: 2rem;
-            z-index: 1000;
-            background: transparent;
-            padding: 0.5rem;
-            border-radius: 10px;
-            backdrop-filter: blur(10px);
-            transition: all 0.3s ease;
+        /* TryHackMe Badge */
+        .thm-badge-container {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 2rem;
+            width: 100%;
         }
 
-        .tryhackme-top-badge iframe {
+        .thm-badge {
+            width: 100%;
+            max-width: 600px;
+            height: 180px;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            transition: transform 0.3s var(--easing), box-shadow 0.3s var(--easing);
+            border: 1px solid rgba(0, 243, 255, 0.2);
+        }
+
+        .thm-badge:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(0, 243, 255, 0.2);
+        }
+
+        .light-mode .thm-badge {
+            border: 1px solid rgba(49, 130, 206, 0.2);
+        }
+
+        .light-mode .thm-badge:hover {
+            box-shadow: 0 15px 40px rgba(49, 130, 206, 0.2);
+        }
+
+        .thm-badge iframe {
+            width: 100%;
+            height: 100%;
             border: none;
-            border-radius: 8px;
-            box-shadow: 0 4px 20px rgba(0, 243, 255, 0.2);
-            transition: all 0.3s ease;
-        }
-
-        .tryhackme-top-badge:hover iframe {
-            box-shadow: 0 6px 25px rgba(0, 243, 255, 0.3);
-            transform: translateY(-2px);
-        }
-
-        .light-mode .tryhackme-top-badge iframe {
-            box-shadow: 0 4px 20px rgba(49, 130, 206, 0.2);
-        }
-
-        .light-mode .tryhackme-top-badge:hover iframe {
-            box-shadow: 0 6px 25px rgba(49, 130, 206, 0.3);
         }
 
         /* Hero Section */
@@ -1211,11 +1216,6 @@
             .projects-grid {
                 grid-template-columns: repeat(2, 1fr);
             }
-
-            .tryhackme-top-badge {
-                left: 1rem;
-                top: 1.5rem;
-            }
         }
 
         /* Mobile navigation */
@@ -1263,21 +1263,6 @@
             .mobile-menu-btn.active span:nth-child(3) {
                 transform: translateY(-6px) rotate(-45deg);
             }
-
-            .tryhackme-top-badge {
-                position: relative;
-                top: 0;
-                left: 0;
-                margin: 2rem auto;
-                width: 100%;
-                display: flex;
-                justify-content: center;
-            }
-
-            .tryhackme-top-badge iframe {
-                width: 300px;
-                height: 150px;
-            }
         }
 
         /* Small mobile devices */
@@ -1311,9 +1296,8 @@
             .cta-buttons {
                 flex-direction: column;
             }
-
-            .tryhackme-top-badge iframe {
-                width: 280px;
+            
+            .thm-badge {
                 height: 140px;
             }
         }
@@ -1322,11 +1306,6 @@
 <body>
     <div class="scroll-progress" id="scrollProgress"></div>
     <canvas id="particleCanvas"></canvas>
-    
-    <!-- TryHackMe Badge at Top -->
-    <div class="tryhackme-top-badge">
-        <iframe src="https://tryhackme.com/api/v2/badges/public-profile?userPublicId=2753301" style="border:none; width:320px; height:160px;"></iframe>
-    </div>
     
     <!-- Theme Toggle -->
     <div class="theme-toggle" id="themeToggle">
@@ -1357,6 +1336,13 @@
 
     <section class="hero-section" id="about">
         <div class="profile-content">
+            <!-- TryHackMe Badge -->
+            <div class="thm-badge-container">
+                <div class="thm-badge">
+                    <iframe src="https://tryhackme.com/api/v2/badges/public-profile?userPublicId=2753301" style="border:none;"></iframe>
+                </div>
+            </div>
+            
             <span class="expertise-badge">Student Innovator & Cybersecurity Enthusiast</span>
             <h1 class="hero-title">Shasradha Karmakar</h1>
             <p class="hero-tagline">Web designer by day, game developer by night, cybersecurity enthusiast 24/7, and student innovator passionate about robotics and AI.</p>
@@ -2125,14 +2111,6 @@
             
             gsap.registerPlugin(ScrollTrigger);
 
-            // Animate TryHackMe badge on load
-            gsap.from('.tryhackme-top-badge', {
-                duration: 1.5,
-                opacity: 0,
-                x: -50,
-                ease: 'power3.out'
-            });
-
             gsap.from('.hero-title', {
                 duration: 1.5,
                 opacity: 0,
@@ -2152,6 +2130,15 @@
                 opacity: 0,
                 y: 30,
                 delay: 0.5,
+                ease: 'power3.out'
+            });
+
+            // Animate TryHackMe badge
+            gsap.from('.thm-badge', {
+                duration: 1.5,
+                opacity: 0,
+                y: 30,
+                delay: 0.2,
                 ease: 'power3.out'
             });
 
