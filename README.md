@@ -11,8 +11,8 @@ I am highly driven by curiosity and real-world problem solving. I don’t just l
 - 15-year-old student of S.N. Memorial School, Asansol (CBSE)  
 - Currently studying in Class IX  
 - Participated in Exhibition/Hackathon (Session 2025–2026)  
-- CTO & EEE of Team INNOVENTIX  
-- Achieved 2nd & 3rd place for innovative models in Science & SST Exhibition  
+- Former CTO & EEE of Team INNOVENTIX  
+- Achieved 2nd & 3rd place for innovative models in Science & SST Exhibition (In Between Session 2025-26)
 
 Favorite Subjects: Science & Computer  
 Nationality: Indian  
